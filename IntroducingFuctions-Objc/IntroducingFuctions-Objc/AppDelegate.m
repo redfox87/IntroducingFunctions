@@ -17,14 +17,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    // Insert code here...
+    NSString *myName = @"Thomas Bloss";
     
+    countDownTillIntroduction(4);
+    printIntroductions(myName);
     
     return YES;
 }
 
 // Define new functions here...
 
+void printIntroductions(NSString* name) {
+    NSString* introduction;
+    NSString* japaneseIntroduction;
+    
+    introduction = [NSString stringWithFormat: @"My name is %@", name];
+    japaneseIntroduction = [introduction stringByAppendingString: @" to moushimasu"];
+    NSLog(@"Introduction: \"%@\"", introduction);
+    NSLog(@"Japanese introduction: \"%@\"", japaneseIntroduction);
+}
 
+void countDownTillIntroduction(int numberOfDays) {
+    if (numberOfDays == 0) {
+        NSLog(@"The time has come");
+    } else {
+        NSLog(@"%d days left until introductions", numberOfDays);
+        countDownTillIntroduction(--numberOfDays);
+    }
+}
 
 @end
